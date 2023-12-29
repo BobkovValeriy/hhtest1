@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import AsideNav from './AsideNav';
+import DataPage from './DataPage';
 
 function App() {
+  const name = "Evano";
+  const position = "Project Manager";
+  const [dataHeader, setDataHeader] = useState('');
+  const [dataFilter, setDataFilter] = useState('');
+  const [tableDataHeaders, setTableDataHeaders] = useState([]);
+  const [dataArr, setDataArr] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AsideNav
+        name={name}
+        position={position}
+        setDataHeader={setDataHeader}
+        setDataFilter={setDataFilter}
+        setTableDataHeaders={setTableDataHeaders}
+        setDataArr={setDataArr}
+      />
+      <DataPage
+        name={name}
+        dataHeader={dataHeader}
+        dataFilter={dataFilter}
+        tableDataHeaders={tableDataHeaders}
+        dataArr={dataArr}
+      />
     </div>
   );
 }
