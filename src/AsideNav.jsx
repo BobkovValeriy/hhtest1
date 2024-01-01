@@ -33,23 +33,35 @@ function AsideNav({
     ]);
     setDataArr(CustomersData);
   }
+  const customStyle = {
+    color: "#838383",
+    fontFamily: "Poppins",
+    fontSize: "10px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "normal",
+    letterSpacing: "-0.1px",
+  };
   return (
     <aside className="aside">
-      <h2>
+      <div className="project-name__wrapper">
         <NavButton
           img={<LogoSVG />}
+          textStyle={"project-name"}
           text={"Dashboard"}
           additionalText={"v.01"}
+          additionalTextStyle={customStyle}
           arrow={false}
         />
-      </h2>
-      <nav>
+      </div>
+      <nav className="navigation-panel">
         <NavButton img={<DashboardSVG />} text={"Dashboard"} arrow={false} />
         <NavButton img={<ProductSVG />} text={"Product"} />
         <NavButton
           img={<CustomersSVG />}
           text={"Customers"}
           functionToLoadData={showAllActiveCustomers}
+          turnOn={true}
         />
         <NavButton img={<IncomeSVG />} text={"Income"} />
         <NavButton img={<PromoteSVG />} text={"Promote"} />
