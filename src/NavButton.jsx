@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import RightArrowSVG from "./image/RightArrowSVG";
 
 function NavButton({
@@ -10,25 +9,15 @@ function NavButton({
   arrow = true,
   functionToLoadData = false,
   turnOn = false,
+  isClicked,
+  click,
 }) {
-  const [clicked, setClicked] = useState(false);
-
-  function NavButtonClicked() {
-    setClicked(!clicked);
-    if (functionToLoadData) functionToLoadData();
-  }
-  // useEffect(() => {
-  //   if (turnOn) {
-  //     NavButtonClicked();
-  //   }
-  // }, []);
-
   return (
     <div
-      onClick={NavButtonClicked}
-      className={clicked ? "nav-button-clicked" : "nav-button"}
+      onClick={click}
+      className={isClicked ? "nav-button-clicked" : "nav-button"}
     >
-      {img}
+      <div className="button-image">{img}</div>
       <div className={textStyle ? textStyle : "default-text__style"}>
         {text}
         {additionalText ? (

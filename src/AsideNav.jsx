@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavButton from "./NavButton";
 import LogoSVG from "./image/LogoSVG";
 import DashboardSVG from "./image/DashboardSVG";
@@ -10,6 +10,7 @@ import HelpSVG from "./image/HelpSVG";
 import ManagerInfo from "./ManagerInfo";
 import EvanoSVG from "./image/evano.png";
 import CustomersData from "./data";
+import { useState } from "react";
 
 function AsideNav({
   name,
@@ -20,7 +21,6 @@ function AsideNav({
   setDataArr,
 }) {
   function showAllActiveCustomers() {
-    console.log("we show all active customers");
     setDataHeader("All Customers");
     setDataFilter("Active Members");
     setTableDataHeaders([
@@ -33,39 +33,57 @@ function AsideNav({
     ]);
     setDataArr(CustomersData);
   }
-  const customStyle = {
-    color: "#838383",
-    fontFamily: "Poppins",
-    fontSize: "10px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    lineHeight: "normal",
-    letterSpacing: "-0.1px",
+  const [lastClickedButton, setLastClickedButton] = useState(null);
+
+  const handleButtonClick = (buttonId, currentFunction) => {
+    setLastClickedButton(buttonId);
+    if (currentFunction) currentFunction();
   };
+  const buttonsData = [
+    { id: 1, img: <DashboardSVG />, text: "Dashboard", arrow: false },
+    { id: 2, img: <ProductSVG />, text: "Product" },
+    {
+      id: 3,
+      img: <CustomersSVG />,
+      text: "Customers",
+      functionToLoadData: () => showAllActiveCustomers(),
+      turnOn: true,
+    },
+    { id: 4, img: <IncomeSVG />, text: "Income" },
+    { id: 5, img: <PromoteSVG />, text: "Promote" },
+    { id: 6, img: <HelpSVG />, text: "Help" },
+  ];
+  useEffect(() => {
+    handleButtonClick(3, showAllActiveCustomers);
+  }, []);
+
   return (
     <aside className="aside">
       <div className="project-name__wrapper">
-        <NavButton
-          img={<LogoSVG />}
-          textStyle={"project-name"}
-          text={"Dashboard"}
-          additionalText={"v.01"}
-          additionalTextStyle={customStyle}
-          arrow={false}
-        />
+        <div className="logo-image">
+          <LogoSVG />
+        </div>
+        <div className="project-name__text">
+          Dashboard<span className="project-name__header">v.01</span>
+        </div>
       </div>
       <nav className="navigation-panel">
-        <NavButton img={<DashboardSVG />} text={"Dashboard"} arrow={false} />
-        <NavButton img={<ProductSVG />} text={"Product"} />
-        <NavButton
-          img={<CustomersSVG />}
-          text={"Customers"}
-          functionToLoadData={showAllActiveCustomers}
-          turnOn={true}
-        />
-        <NavButton img={<IncomeSVG />} text={"Income"} />
-        <NavButton img={<PromoteSVG />} text={"Promote"} />
-        <NavButton img={<HelpSVG />} text={"Help"} />
+        {buttonsData.map((button) => {
+          return (
+            <NavButton
+              key={button.id}
+              img={button.img}
+              text={button.text}
+              arrow={button.arrow}
+              functionToLoadData={button.functionToLoadData}
+              turnOn={button.turnOn}
+              click={() =>
+                handleButtonClick(button.id, button.functionToLoadData)
+              }
+              isClicked={lastClickedButton === button.id}
+            />
+          );
+        })}
       </nav>
       <ManagerInfo foto={EvanoSVG} name={name} position={position} />
     </aside>

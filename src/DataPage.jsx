@@ -4,12 +4,12 @@ function DataPage({ name, dataHeader, dataFilter, tableDataHeaders, dataArr }) {
   return (
     <div className="data-page">
       <div className="data-page__wrapper">
-        <div>Hello {name} 👋🏼,</div>
+        <div className="data-page__greating">Hello {name} 👋🏼,</div>
         <div className="data-table">
           <div className="table-header">
             <h3>
-              <div>{dataHeader}</div>
-              <div>{dataFilter}</div>
+              <div className="data-header">{dataHeader}</div>
+              <div className="data-filter">{dataFilter}</div>
             </h3>
             <form></form>
           </div>
