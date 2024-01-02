@@ -40,18 +40,45 @@ function AsideNav({
     if (currentFunction) currentFunction();
   };
   const buttonsData = [
-    { id: 1, img: <DashboardSVG />, text: "Dashboard", arrow: false },
-    { id: 2, img: <ProductSVG />, text: "Product" },
+    {
+      id: 1,
+      img: <DashboardSVG color="#9197B3" />,
+      clickedimg: <DashboardSVG color="#FFF" />,
+      text: "Dashboard",
+      arrow: false,
+    },
+    {
+      id: 2,
+      img: <ProductSVG color="#9197B3" />,
+      clickedimg: <ProductSVG color="#FFF" />,
+      text: "Product",
+    },
     {
       id: 3,
-      img: <CustomersSVG />,
+      img: <CustomersSVG color="#9197B3" />,
+      clickedimg: <CustomersSVG color="#FFF" />,
       text: "Customers",
       functionToLoadData: () => showAllActiveCustomers(),
       turnOn: true,
     },
-    { id: 4, img: <IncomeSVG />, text: "Income" },
-    { id: 5, img: <PromoteSVG />, text: "Promote" },
-    { id: 6, img: <HelpSVG />, text: "Help" },
+    {
+      id: 4,
+      img: <IncomeSVG color="#9197B3" />,
+      clickedimg: <IncomeSVG color="#FFF" />,
+      text: "Income",
+    },
+    {
+      id: 5,
+      img: <PromoteSVG color="#9197B3" />,
+      clickedimg: <PromoteSVG color="#FFF" />,
+      text: "Promote",
+    },
+    {
+      id: 6,
+      img: <HelpSVG color="#9197B3" />,
+      clickedimg: <HelpSVG color="#FFF" />,
+      text: "Help",
+    },
   ];
   useEffect(() => {
     handleButtonClick(3, showAllActiveCustomers);
@@ -73,6 +100,7 @@ function AsideNav({
             <NavButton
               key={button.id}
               img={button.img}
+              clickedimg={button.clickedimg}
               text={button.text}
               arrow={button.arrow}
               functionToLoadData={button.functionToLoadData}
