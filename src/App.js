@@ -4,6 +4,7 @@ import AsideNav from './AsideNav';
 import DataPage from './DataPage';
 
 function App() {
+  const why = "wtf"
   const name = "Evano";
   const position = "Project Manager";
   const [dataHeader, setDataHeader] = useState('');
