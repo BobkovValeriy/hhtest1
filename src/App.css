@@ -52,6 +52,11 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.14px;
   background-color: #fff;
 }
 .App {
@@ -114,13 +119,11 @@ body {
   width: 250px;
   margin-left: 28px;
   margin-bottom: 44px;
+  border-radius: 8px;
   color: #9197b3;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+
 }
 .nav-button-clicked {
   cursor: pointer;
@@ -133,12 +136,6 @@ body {
   margin-left: 28px;
   margin-bottom: 44px;
   color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
   border-radius: 8px;
   background-color: #5932ea;
 }
@@ -263,12 +260,6 @@ thead {
 }
 th {
   color: #b5b7c0;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
 }
 th,
 td {
@@ -280,24 +271,12 @@ td {
   padding-top: 24px;
   padding-bottom: 24px;
   color: #292d32;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
   border-bottom: 1px solid #eee;
 }
 .table-cell__data-status {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 19px;
   color: #292d32;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
   border-bottom: 1px solid #eee;
 }
 .table-cell__active {
@@ -351,12 +330,6 @@ td:last-child {
 }
 .data-indexies {
   color: #b5b7c0;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
   margin-bottom: 41px;
 }
 .data-pages {
@@ -378,7 +351,6 @@ td:last-child {
   background: #f5f5f5;
   margin-left: 12px;
   color: #404b52;
-  font-family: Poppins;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -404,4 +376,104 @@ td:last-child {
 }
 .data-page {
   flex: 0 0 1134px;
+}
+@media screen and (max-width: 1024px) {
+  body {
+  display: block;
+}
+  .App {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+  }
+  .table-cell__data {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.table-cell__data-status {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.table-cell__data {
+  padding-top: 21px;
+  padding-bottom: 21px;
+  color: #292d32;
+  border-bottom: 1px solid #eee;
+}
+.table-cell__data-status {
+  padding-top: 17px;
+  padding-bottom: 16px;
+  color: #292d32;
+  border-bottom: 1px solid #eee;
+}
+.nav-item {
+  font-size: 8px;
+}
+}
+@media screen and (max-width: 768px) {
+  body {
+  display: block;
+  width: 768px;
+  height: auto;
+}
+  .App {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .aside {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+  .aside:not(.showNav) {
+    flex-direction: row;
+  }
+.navigation-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: end;
+  margin: 0;
+  margin-right: 10px;
+  flex: 1 1;
+}
+.nav-button {
+  margin: 0 10xp 0 0;
+  border-radius: 6px;
+
+}
+.nav-button-clicked {
+  margin: 0 10xp 0 0;
+  border-radius: 6px;
+}
+.manager-foto {
+  width: 42px;
+  height: 42px;
+  border-radius: 42px;
+  margin: 32px 0 0px 28px;
+}
+.manager-data {
+  margin: 34px 12px 2px 12px;
+}
+.data-table {
+  width: 100%;
+  margin-top: 31px;
+}
+.data-page__wrapper {
+  margin: 0;
+}
+.arrow-style{
+  display: none;
+}
 }

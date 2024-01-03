@@ -34,6 +34,10 @@ function AsideNav({
     setDataArr(CustomersData);
   }
   const [lastClickedButton, setLastClickedButton] = useState(null);
+  const [showNav, setShowNav] = useState(true);
+  function showNavPannel() {
+    setShowNav(!showNav);
+  }
 
   const handleButtonClick = (buttonId, currentFunction) => {
     setLastClickedButton(buttonId);
@@ -85,8 +89,8 @@ function AsideNav({
   }, []);
 
   return (
-    <aside className="aside">
-      <div className="project-name__wrapper">
+    <aside className={`aside ${showNav ? "showNav" : ""}`}>
+      <div className="project-name__wrapper" onClick={showNavPannel}>
         <div className="logo-image">
           <LogoSVG />
         </div>
@@ -95,23 +99,25 @@ function AsideNav({
         </div>
       </div>
       <nav className="navigation-panel">
-        {buttonsData.map((button) => {
-          return (
-            <NavButton
-              key={button.id}
-              img={button.img}
-              clickedimg={button.clickedimg}
-              text={button.text}
-              arrow={button.arrow}
-              functionToLoadData={button.functionToLoadData}
-              turnOn={button.turnOn}
-              click={() =>
-                handleButtonClick(button.id, button.functionToLoadData)
-              }
-              isClicked={lastClickedButton === button.id}
-            />
-          );
-        })}
+        {showNav
+          ? buttonsData.map((button) => {
+              return (
+                <NavButton
+                  key={button.id}
+                  img={button.img}
+                  clickedimg={button.clickedimg}
+                  text={button.text}
+                  arrow={button.arrow}
+                  functionToLoadData={button.functionToLoadData}
+                  turnOn={button.turnOn}
+                  click={() =>
+                    handleButtonClick(button.id, button.functionToLoadData)
+                  }
+                  isClicked={lastClickedButton === button.id}
+                />
+              );
+            })
+          : null}
       </nav>
       <ManagerInfo foto={EvanoSVG} name={name} position={position} />
     </aside>
